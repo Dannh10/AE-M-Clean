@@ -1,0 +1,35 @@
+body {
+  scroll-behavior: smooth;
+}
+
+header, section {
+  padding-top: 80px;
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 576px) {
+    .logo {
+        max-width: 200px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+    .logo {
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 993px) {
+    .logo {
+        max-width: 400px;
+    }
+}
+
+
