@@ -8,47 +8,105 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Rubik&display=swap" rel="stylesheet">
         <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-        <link rel="stylesheet" href="style.css">
-
         <style>
             body {
                 font-family: 'Rubik', sans-serif;
                 scroll-behavior: smooth;
+                overflow-x: hidden;
             }
-
             h1, h2, h3, .display-4 {
                 font-family: 'Montserrat', sans-serif;
             }
-
             header, section {
                 padding-top: 80px;
             }
-
-            .card {
-                transition: transform 0.3s ease;
+            #particles-js {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 0;
             }
-
+            .header-content {
+                position: relative;
+                z-index: 1;
+            }
+            .card {
+                transition: all 0.4s ease;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(8px);
+                border: none;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                border-radius: 12px;
+                overflow: hidden;
+            }
             .card:hover {
-                transform: scale(1.05);
+                transform: translateY(-10px) scale(1.03);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            }
+            .btn-whatsapp {
+                position: relative;
+                overflow: hidden;
+                background: linear-gradient(45deg, #25D366, #128C7E);
+                border: none;
+                transition: all 0.3s ease;
+            }
+            .btn-whatsapp:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
             }
 
             .logo {
                 width: 150px;
                 height: auto;
+                transition: transform 0.3s ease;
+            }
+
+            .logo:hover {
+                transform: rotate(5deg) scale(1.05);
+            }
+            .social-icon {
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+            .social-icon:hover {
+                transform: translateY(-5px) scale(1.1);
+                filter: drop-shadow(0 5px 10px rgba(0, 180, 255, 0.4));
+            }
+            .video-container {
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            @media (max-width: 768px) {
+                .display-4 {
+                    font-size: 2.2rem;
+                }
+                header, section {
+                    padding-top: 60px;
+                }
             }
         </style>
     </head>
     <body>
-
-        <header id="inicio" class="bg-primary text-white text-center py-5 mt-3">
-            <div class="container">
+        <header id="inicio" class="bg-primary text-white text-center py-5 position-relative">
+            <div id="particles-js"></div>
+            <div class="container header-content">
                 <img src="file_00000000a6e061fdb24fab34a87dec73.png" alt="Logo" class="logo mb-3 img-fluid" data-aos="zoom-in">
                 <h1 class="display-4" data-aos="fade-down">AE&M Clean</h1>
                 <h1 class="display-4" data-aos="fade-down">¡Deja todo como nuevo!</h1>
                 <p class="lead" data-aos="fade-up">Lavado de autos, colchones y sillones a domicilio</p>
             </div>
         </header>
-
+        <section id="video" class="py-5 bg-dark text-white">
+            <div class="container text-center">
+                <h2 class="mb-4" data-aos="fade-up">Nuestro Trabajo en Acción</h2>
+                <div class="video-container ratio ratio-16x9 mx-auto" data-aos="zoom-in">
+                    <iframe src="https://www.youtube.com/embed/ejemplo" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
         <section id="servicios" class="py-5 bg-light">
             <div class="container text-center">
                 <h2 class="mb-4" data-aos="fade-right">Precios Promocionales (Vigencia al 1 de Julio del 2025)</h2>
@@ -107,8 +165,18 @@
         <section id="contacto" class="py-5 bg-light">
             <div class="container text-center" data-aos="fade-up">
                 <h2>Contacto</h2>
-                <p>¿Dudas o reservas? Escríbenos por WhatsApp</p>
-                <a href="https://wa.me/5214774458508" target="_blank" class="btn btn-success btn-lg">
+                <p>¿Dudas o reservas? Contáctanos</p>
+                
+                <div class="d-flex justify-content-center gap-4 mt-4 mb-4">
+                    <a href="https://wa.me/5214774458508" target="_blank" class="social-icon">
+                        <img src="whatsapp.png" alt="WhatsApp" width="50">
+                    </a>
+                    <a href="https://www.facebook.com/alex.estrellac" target="_blank" class="social-icon">
+                        <img src="facebook.png" alt="Facebook" width="50">
+                    </a>
+                </div>
+                
+                <a href="https://wa.me/5214774458508" target="_blank" class="btn btn-whatsapp btn-lg px-4 py-2">
                     Enviar WhatsApp
                 </a>
             </div>
@@ -123,8 +191,30 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <script src="scipt.js"></script>
+        <script src="particles.min.js"></script>
+        <script src="script.js"></script>
         <script src="mapa.js"></script>
+        
+        <script>
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out-quad'
+            });
+            
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#ffffff" },
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.5, "random": true },
+                    "size": { "value": 3, "random": true },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+                    "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false }
+                },
+                "interactivity": {
+                    "onhover": { "enable": true, "mode": "repulse" }
+                }
+            });
+        </script>
     </body>
 </html>
-
