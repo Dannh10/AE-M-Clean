@@ -696,24 +696,6 @@
                     <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
                 </a>
             </div>
-
-            <!-- Preview Cards -->
-            <div class="preview-cards" data-aos="fade-up" data-aos-delay="800">
-                <div class="preview-card" onclick="scrollToSection('video')">
-                    <i class="fas fa-play-circle"></i>
-                    Video
-                </div>
-                <div class="preview-card" onclick="scrollToSection('servicios')">
-                    <i class="fas fa-tags"></i>
-                    Precios
-                </div>
-                <div class="preview-card" onclick="scrollToSection('ubicacion')">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Ubicación
-                </div>
-            </div>
-
-            <!-- Scroll Indicator -->
             <div class="scroll-indicator" onclick="scrollToSection('video')" data-aos="fade-up" data-aos-delay="1000">
                 <i class="fas fa-chevron-down"></i>
                 <span>Descubre más</span>
@@ -901,25 +883,30 @@
 
             // Configuración del mapa
             document.addEventListener('DOMContentLoaded', function() {
-                // Inicializar mapa de Leaflet
-                const map = L.map('mapa').setView([21.1619, -101.7026], 13);
-                
+
+                const coordenadas = [21.100265, -101.690543]; 
+                const mapa = L.map('mapa').setView(coordenadas, 13);
+
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors'
-                }).addTo(map);
-                
-                // Añadir marcador
-                L.marker([21.1619, -101.7026]).addTo(map)
-                    .bindPopup('AE&M Clean<br>León, Guanajuato')
-                    .openPopup();
-                
-                // Añadir círculo de cobertura
-                L.circle([21.1619, -101.7026], {
-                    color: '#667eea',
-                    fillColor: '#667eea',
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }).addTo(mapa);
+
+                const icono = L.divIcon({
+                    className: 'pulse-marker',
+                    html: '<div style="background-color: #0d6efd; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.5);"></div>',
+                    iconSize: [24, 24]
+                });
+
+                L.marker(coordenadas, { icon: icono }).addTo(mapa)
+                .bindPopup('<b>AE&M Clean</b><br>Aquí ofrecemos servicio')
+                .openPopup();
+
+                L.circle(coordenadas, {
+                    color: '#0d6efd',
+                    fillColor: '#0d6efd',
                     fillOpacity: 0.2,
-                    radius: 5000
-                }).addTo(map).bindPopup('Zona de cobertura');
+                    radius: 3000 
+                }).addTo(mapa);
             });
 
             // Animación de números en las tarjetas de precios
