@@ -87,6 +87,17 @@
                     padding-top: 60px;
                 }
             }
+            /* Estilos para el video vertical */
+#video video {
+    max-height: 600px; /* Altura máxima para desktop */
+    object-fit: cover; /* Mantiene la proporción del video */
+}
+
+@media (max-width: 768px) {
+    #video video {
+        max-height: 500px; /* Altura menor para móviles */
+    }
+}
         </style>
     </head>
     <body>
